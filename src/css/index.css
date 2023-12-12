@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* .color1 {color: #060606;}  black
+.color2 {color: #232434;} black 80%
+.color3 {color: #585e78;} grey
+.color4 {color: #919ccb;}grey/blue
+.color5 {color: #cad4e8;} light grey*/
+
+body {
+  background-color: #cad4e8;
+}
