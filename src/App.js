@@ -1,31 +1,58 @@
 import React, { useState } from 'react';
 import Board from './components/Board';
-import BoardContext from './context';
+import BoardContext from './BoardContext';
+import TaskContext from './TaskContext';
 
 function App() {
-    const { Provider } = BoardContext;
-    const [arr] = useState([
+    const { Provider: BoardProvider } = BoardContext;
+    const { Provider: TaskProvider } = TaskContext;
+
+    const [colArr, setColArr] = useState([
         {
             id: 1,
-            name: 'Pending',
+            name: 'To Do',
             limit: 4,
         },
         {
             id: 2,
-            name: 'Analysis-Doing',
+            name: 'In Progress',
             limit: 3,
         },
         {
             id: 3,
-            name: 'Analysis-Done',
+            name: 'Completed',
             limit: 4,
         },
     ]);
+    const [taskArr, setTaskArr] = useState([
+        {
+            id: 1,
+            name: 'Task1',
+            idColumn: 1,
+            user: 'Anna',
+        },
+        {
+            id: 2,
+            name: 'Task1',
+            idColumn: 1,
+            user: 'Robert',
+        },
+        {
+            id: 3,
+            name: 'Task1',
+            idColumn: 1,
+            user: 'John',
+        },
+    ]);
     return (
-        <Provider value={arr}>
-            <Board />
-        </Provider>
+        <BoardProvider value={{colArr, setColArr}}>
+            <TaskProvider value={{ taskArr, setTaskArr }}>
+                <Board />
+            </TaskProvider>
+        </BoardProvider>
     );
 }
 
 export default App;
+
+// porownianie id kolumny z idColumn taska
