@@ -44,9 +44,14 @@ function App() {
             user: 'John',
         },
     ]);
+
+    const nextHandle = () => {
+        // console.log('działa')
+    }
+
     return (
         <BoardProvider value={{colArr, setColArr}}>
-            <TaskProvider value={{ taskArr, setTaskArr }}>
+            <TaskProvider value={{ taskArr, setTaskArr, nextHandle}} >
                 <Board />
             </TaskProvider>
         </BoardProvider>
@@ -54,5 +59,3 @@ function App() {
 }
 
 export default App;
-
-// porownianie id kolumny z idColumn taska

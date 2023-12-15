@@ -10,7 +10,7 @@ function Board() {
             {(context) => ( 
                 <div className="board">
                     {context.colArr.map((item) => (
-                        <Column key={item.id} name={item.name} limit={item.limit} />
+                        <Column key={item.id} name={item.name} limit={item.limit} id={item.id} />
                     ))}
                 </div>
             )}

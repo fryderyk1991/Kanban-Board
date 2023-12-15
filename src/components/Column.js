@@ -4,7 +4,7 @@ import TaskContext from '../TaskContext';
 import Task from './Task';
 import '../css/column.css';
 
-function Column({ name, limit }) {
+function Column({ name, limit, id }) {
     const { Consumer: TaskConsumer } = TaskContext;
     return (
         <section className="bord__column column">
@@ -13,8 +13,8 @@ function Column({ name, limit }) {
                 <TaskConsumer>
                     {(context) => (
                         <div className="task__container">
-                            {context.taskArr.map((item) => (
-                                <Task key={item.id} name={item.name} user={item.user}  />
+                            {context.taskArr.filter(item => item.idColumn === id).map(filteredItem => (
+                                <Task key={filteredItem.id} name={filteredItem.name} user={filteredItem.user}/>
                             ))}
                         </div>
                     )}
@@ -28,6 +28,7 @@ function Column({ name, limit }) {
 Column.propTypes = {
     name: PropTypes.string.isRequired,
     limit: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired
 };
 
 export default Column;
