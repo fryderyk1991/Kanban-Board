@@ -45,16 +45,24 @@ function App() {
         },
     ]);
 
-    const nextHandle = (id) => {
+    const nextHandle = (id, idCol) => {
         const updateTaskArr = taskArr.map(task => (
             task.id === id ? { ...task, idColumn: task.idColumn + 1} : task
         ))
         setTaskArr(updateTaskArr)    
+        console.log(idCol)
+    }
+    const prevHandle = (id, idCol) => {
+        const updateTaskArr = taskArr.map(task => (
+            task.id === id ? { ...task, idColumn: task.idColumn - 1} : task
+        ))
+        setTaskArr(updateTaskArr)   
+        console.log(idCol) 
     }
 
     return (
         <BoardProvider value={{colArr, setColArr}}>
-            <TaskProvider value={{ taskArr, setTaskArr, nextHandle}} >
+            <TaskProvider value={{ taskArr, setTaskArr, nextHandle, prevHandle}} >
                 <Board />
             </TaskProvider>
         </BoardProvider>
