@@ -45,8 +45,11 @@ function App() {
         },
     ]);
 
-    const nextHandle = () => {
-        // console.log('działa')
+    const nextHandle = (id) => {
+        const updateTaskArr = taskArr.map(task => (
+            task.id === id ? { ...task, idColumn: task.idColumn + 1} : task
+        ))
+        setTaskArr(updateTaskArr)    
     }
 
     return (

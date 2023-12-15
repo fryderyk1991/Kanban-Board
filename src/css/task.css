@@ -10,3 +10,13 @@
 .list__item {
     margin: 10px 0;
 }
+
+.task__list--active {
+    position: relative;
+}
+.list__arrow-right {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
