@@ -16,7 +16,7 @@ function App() {
         {
             id: 2,
             name: 'In Progress',
-            limit: 3,
+            limit: 2,
         },
         {
             id: 3,
@@ -33,13 +33,13 @@ function App() {
         },
         {
             id: 2,
-            name: 'Task1',
+            name: 'Task2',
             idColumn: 1,
             user: 'Robert',
         },
         {
             id: 3,
-            name: 'Task1',
+            name: 'Task3',
             idColumn: 1,
             user: 'John',
         },

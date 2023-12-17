@@ -25,6 +25,8 @@ function Column({ name, limit, id }) {
     );
 }
 
+
+
 Column.propTypes = {
     name: PropTypes.string.isRequired,
     limit: PropTypes.number.isRequired,

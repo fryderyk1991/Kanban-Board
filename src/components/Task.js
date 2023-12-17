@@ -16,7 +16,7 @@ function Task({ name, user, idTask, idCol }) {
     }
     return (
         <ul className='task__list list' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-            {isHovered ? <div className='list__arrows'><div className='list__arrow--next'><HiOutlineArrowSmallRight size={25} onClick={handleNext}/></div><div className='list__arrow--prev'><HiOutlineArrowSmallLeft size={25} onClick={handlePrev}/></div></div>: null}
+            {isHovered ? <div className='list__arrows'><HiOutlineArrowSmallRight className='list__arrow--next' size={25} onClick={handleNext}/><HiOutlineArrowSmallLeft  className='list__arrow--prev' size={25} onClick={handlePrev}/></div>: null}
             <li className="task__name list__item">{name}</li>
             <li className="task__user list__item">{user}</li>
         </ul>
