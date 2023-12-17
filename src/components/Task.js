@@ -9,10 +9,18 @@ function Task({ name, user, idTask, idCol }) {
     const [isHovered, setIsHovered] = useState(false);
 
     const handleNext = () => {
-        nextHandle(idTask, idCol);
+        if (idCol <= 2) {
+            nextHandle(idTask, idCol);
+            console.log(idCol)
+        }
+        return nextHandle;
     }
     const handlePrev = () => {
-        prevHandle(idTask, idCol);
+        if(idCol > 1) {
+            prevHandle(idTask, idCol);
+        }
+        return prevHandle;
+       
     }
     return (
         <ul className='task__list list' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
