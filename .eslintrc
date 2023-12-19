@@ -20,6 +20,7 @@
         "react/state-in-constructor": [0, "never"]
     },
     "globals": {
+        "localStorage": true,
         "window": true,
         "document": true
     }

@@ -14,7 +14,7 @@ function Column({ name, limit, id }) {
                     {(context) => (
                         <div className="task__container">
                             {context.taskArr.filter(item => item.idColumn === id).map(filteredItem => (
-                                <Task key={filteredItem.id} name={filteredItem.name} user={filteredItem.user} idTask={filteredItem.id} idCol={filteredItem.idColumn}/>
+                                <Task key={filteredItem.id} name={filteredItem.name} user={filteredItem.user} idTask={filteredItem.id} idCol={filteredItem.idColumn} limit={limit} tasks={context.taskArr} />
                             ))}
                         </div>
                     )}

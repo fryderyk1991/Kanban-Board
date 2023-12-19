@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import Board from './components/Board';
 import BoardContext from './BoardContext';
 import TaskContext from './TaskContext';
+import Form from './components/Form';
 
 function App() {
     const { Provider: BoardProvider } = BoardContext;
     const { Provider: TaskProvider } = TaskContext;
-
     const [colArr, setColArr] = useState([
         {
             id: 1,
@@ -45,25 +45,22 @@ function App() {
         },
     ]);
 
-    const nextHandle = (id, idCol) => {
-        const updateTaskArr = taskArr.map(task => (
-            task.id === id ? { ...task, idColumn: task.idColumn + 1} : task
-        ))
-        setTaskArr(updateTaskArr)    
-        console.log(idCol)
-    }
-    const prevHandle = (id, idCol) => {
-        const updateTaskArr = taskArr.map(task => (
-            task.id === id ? { ...task, idColumn: task.idColumn - 1} : task
-        ))
-        setTaskArr(updateTaskArr)   
-        console.log(idCol) 
-    }
+    const nextHandle = (id) => {
+        const updateTaskArr = taskArr.map((task) => (task.id === id ? { ...task, idColumn: task.idColumn + 1 } : task));
+        setTaskArr(updateTaskArr);
+    };
+    const prevHandle = (id) => {
+        const updateTaskArr = taskArr.map((task) => (task.id === id ? { ...task, idColumn: task.idColumn - 1 } : task));
+        setTaskArr(updateTaskArr);
+    };
+
+    // form - dodawanie obiektów z danymi do taskArr
 
     return (
-        <BoardProvider value={{colArr, setColArr}}>
-            <TaskProvider value={{ taskArr, setTaskArr, nextHandle, prevHandle}} >
+        <BoardProvider value={{ colArr, setColArr }}>
+            <TaskProvider value={{ taskArr, setTaskArr, nextHandle, prevHandle }}>
                 <Board />
+                <Form />
             </TaskProvider>
         </BoardProvider>
     );
