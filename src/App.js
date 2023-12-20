@@ -28,9 +28,7 @@ function App() {
                     task.id === idTask ? { ...task, idColumn: task.idColumn + 1 } : task,
                 );
                 setTaskArr(updateTaskArr);
-            } else {
-                console.log('above the limit');
-            }
+            } 
         }
         return nextHandle;
     };
@@ -47,9 +45,7 @@ function App() {
                     task.id === idTask ? { ...task, idColumn: task.idColumn - 1 } : task,
                 );
                 setTaskArr(updateTaskArr);
-            } else {
-                console.log('above the limit');
-            }
+            } 
         }
         return prevHandle;
     };
