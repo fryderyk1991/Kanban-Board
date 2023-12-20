@@ -1,37 +1,18 @@
 import React, { useState } from 'react';
 import Board from './components/Board';
-import BoardContext from './BoardContext';
 import TaskContext from './TaskContext';
 import Form from './components/Form';
 import getColumnTaskCount from './tasksFunctions';
 import validation from './validation';
+import columns from './columnFields';
 
 function App() {
-    const { Provider: BoardProvider } = BoardContext;
     const { Provider: TaskProvider } = TaskContext;
     const [values, setValues] = useState({
         taskName: '',
         authorName: '',
     });
-    const [errors, setErrors] = useState({})
-    /// colArr przenieśc do osobnego pliku - nie zmieniamy state, więc nam to nie potrzebne
-    const [colArr, setColArr] = useState([
-        {
-            id: 1,
-            name: 'To Do',
-            limit: 4,
-        },
-        {
-            id: 2,
-            name: 'In Progress',
-            limit: 2,
-        },
-        {
-            id: 3,
-            name: 'Completed',
-            limit: 4,
-        },
-    ]);
+    const [errors, setErrors] = useState({});
     const [taskArr, setTaskArr] = useState([
         {
             id: 1,
@@ -58,7 +39,7 @@ function App() {
             const nextIdColumn = idColumn + 1;
             const countTaskInColumn = getColumnTaskCount(nextIdColumn, taskArr);
 
-            const colLimit = colArr.find((col) => col.id === nextIdColumn).limit;
+            const colLimit = columns.find((col) => col.id === nextIdColumn).limit;
 
             if (countTaskInColumn < colLimit) {
                 const updateTaskArr = taskArr.map((task) =>
@@ -77,7 +58,7 @@ function App() {
             const prevIdColumn = idColumn - 1;
             const countTaskInColumn = getColumnTaskCount(prevIdColumn, taskArr);
 
-            const colLimit = colArr.find((col) => col.id === prevIdColumn).limit;
+            const colLimit = columns.find((col) => col.id === prevIdColumn).limit;
 
             if (countTaskInColumn < colLimit) {
                 const updateTaskArr = taskArr.map((task) =>
@@ -95,7 +76,7 @@ function App() {
         e.preventDefault();
         const err = validation(values);
         setErrors(err);
-        console.log(errors)
+        console.log(errors);
     };
 
     const onChange = (e) => {
@@ -104,15 +85,13 @@ function App() {
             ...prevValues,
             [name]: value,
         }));
-        console.log(name, value)
+        console.log(name, value);
     };
     return (
-        <BoardProvider value={{ colArr, setColArr }}>
-            <TaskProvider value={{ taskArr, nextHandle, prevHandle }}>
-                <Board />
-                <Form handleSubmit={handleSubmit} values={values} onChange={onChange} errors={errors}/>
-            </TaskProvider>
-        </BoardProvider>
+        <TaskProvider value={{ taskArr, nextHandle, prevHandle }}>
+            <Board />
+            <Form handleSubmit={handleSubmit} values={values} onChange={onChange} errors={errors} />
+        </TaskProvider>
     );
 }
 
