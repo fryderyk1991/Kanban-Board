@@ -8,6 +8,11 @@ import getColumnTaskCount from './tasksFunctions';
 function App() {
     const { Provider: BoardProvider } = BoardContext;
     const { Provider: TaskProvider } = TaskContext;
+    const [values, setValues] = useState({
+        taskName: '',
+        authorName: '',
+    });
+    /// colArr przenieśc do osobnego pliku - nie zmieniamy state, więc nam to nie potrzebne
     const [colArr, setColArr] = useState([
         {
             id: 1,
@@ -47,12 +52,12 @@ function App() {
     ]);
 
     const nextHandle = (idTask, idColumn) => {
-        if(idColumn <= 2) {
+        if (idColumn <= 2) {
             const nextIdColumn = idColumn + 1;
             const countTaskInColumn = getColumnTaskCount(nextIdColumn, taskArr);
-    
+
             const colLimit = colArr.find((col) => col.id === nextIdColumn).limit;
-          
+
             if (countTaskInColumn < colLimit) {
                 const updateTaskArr = taskArr.map((task) =>
                     task.id === idTask ? { ...task, idColumn: task.idColumn + 1 } : task,
@@ -66,12 +71,12 @@ function App() {
     };
 
     const prevHandle = (idTask, idColumn) => {
-        if(idColumn > 1) {
+        if (idColumn > 1) {
             const prevIdColumn = idColumn - 1;
             const countTaskInColumn = getColumnTaskCount(prevIdColumn, taskArr);
-    
+
             const colLimit = colArr.find((col) => col.id === prevIdColumn).limit;
-    
+
             if (countTaskInColumn < colLimit) {
                 const updateTaskArr = taskArr.map((task) =>
                     task.id === idTask ? { ...task, idColumn: task.idColumn - 1 } : task,
@@ -82,16 +87,26 @@ function App() {
             }
         }
         return prevHandle;
-      
     };
 
-    // form - dodawanie obiektów z danymi do taskArr
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(values)
+    };
 
+    const onChange = (e) => {
+        const { name, value } = e.target;
+        setValues((prevValues) => ({
+            ...prevValues,
+            [name]: value,
+        }));
+        console.log(name, value)
+    };
     return (
         <BoardProvider value={{ colArr, setColArr }}>
-            <TaskProvider value={{ taskArr, setTaskArr, nextHandle, prevHandle }}>
+            <TaskProvider value={{ taskArr, nextHandle, prevHandle }}>
                 <Board />
-                <Form />
+                <Form handleSubmit={handleSubmit} values={values} onChange={onChange} />
             </TaskProvider>
         </BoardProvider>
     );

@@ -7,11 +7,20 @@ import TaskContext from '../TaskContext';
 function Task({ name, user, idTask, idCol }) {
     const { nextHandle, prevHandle } = useContext(TaskContext);
     const [isHovered, setIsHovered] = useState(false);
+    // const [isArrowOff , setIsArrowOf]  = useState(false);
+
+    // const handleArrow = () => {
+    //     const colNum = idCol;
+
+    // }
 
     return (
         <ul
             className="task__list list"
-            onMouseEnter={() => setIsHovered(true)}
+            onMouseEnter={() => {
+                setIsHovered(true)
+                // handleArrow()
+            }}
             onMouseLeave={() => setIsHovered(false)}
         >
             {isHovered ? (
@@ -25,6 +34,9 @@ function Task({ name, user, idTask, idCol }) {
         </ul>
     );
 }
+
+
+// 
 
 Task.propTypes = {
     name: PropTypes.string.isRequired,
