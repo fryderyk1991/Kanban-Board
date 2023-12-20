@@ -5,6 +5,7 @@ import Form from './components/Form';
 import getColumnTaskCount from './tasksFunctions';
 import validation from './validation';
 import columns from './columnFields';
+import useStorage from './hook'
 
 function App() {
     const { Provider: TaskProvider } = TaskContext;
@@ -13,7 +14,7 @@ function App() {
         authorName: '',
     });
     const [errors, setErrors] = useState({});
-    const [taskArr, setTaskArr] = useState([]);
+    const [taskArr, setTaskArr] = useStorage('tasks', []);
 
     const nextHandle = (idTask, idColumn) => {
         if (idColumn <= 2) {

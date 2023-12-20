@@ -1,5 +1,3 @@
-// getItem pobieranie wrtosci z taskArr, która będzie pobierana z tablicy z obiektami dodanymi przez formularz
-// setItem kopia tablicy z taskami po zmianie w momenci dodania danych z formularza.
 
 import { useEffect, useState } from 'react';
 
