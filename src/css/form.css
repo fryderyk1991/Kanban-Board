@@ -1,26 +1,31 @@
 .form__item {
-    margin-right: 5px;
+    margin-right: 8px;
 }
 .add-task {
-    margin-top: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
 }
 .form__error {
-    color: red;
+    color: #fa2351;
     font-size: 13px;
-    margin-left: 3px;
 }
 .form__input {
-    padding: 5px 5px;
-    margin-left: 5px;
+    padding: 5px;
     border-radius: 5px;
     border: none;
+    margin-left: 2px;
 }
 .form__btn--submit {
-    padding: 5px;
+    padding: 5px 15px;
     margin-top: 5px;
     border-radius: 5px;
     border: none;
+    cursor: pointer;
+    background-color: #f76b8a;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    margin: 0;
 }

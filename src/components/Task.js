@@ -47,33 +47,34 @@ function Task({ name, user, idTask, idCol, tasks }) {
             onMouseEnter={() => {
                 setIsHovered(true);
                 nextArrow();
-                prevArrow()
+                prevArrow();
             }}
             onMouseLeave={() => {
                 setIsHovered(false);
             }}
-            
         >
-            {isHovered ? (
-                <div className="list__arrows">
-                    {idCol !== 3 && showRightArrow && (
-                        <HiOutlineArrowSmallRight
-                            className="list__arrow--next"
-                            size={25}
-                            onClick={() => nextHandle(idTask, idCol)}
-                        />
-                    )}
-                    {idCol !== 1 && showLeftArrow &&(
-                        <HiOutlineArrowSmallLeft
-                            className="list__arrow--prev"
-                            size={25}
-                            onClick={() => prevHandle(idTask, idCol)}
-                        />
-                    )}
-                </div>
-            ) : null}
             <li className="task__name list__item">{name}</li>
-            <li className="task__user list__item">{user}</li>
+            <li className="task__user list__item">
+                {user}
+                {isHovered ? (
+                    <div className="list__arrows">
+                        {idCol !== 3 && showRightArrow && (
+                            <HiOutlineArrowSmallRight
+                                className="list__arrow--next"
+                                size={25}
+                                onClick={() => nextHandle(idTask, idCol)}
+                            />
+                        )}
+                        {idCol !== 1 && showLeftArrow && (
+                            <HiOutlineArrowSmallLeft
+                                className="list__arrow--prev"
+                                size={25}
+                                onClick={() => prevHandle(idTask, idCol)}
+                            />
+                        )}
+                    </div>
+                ) : null}
+            </li>
         </ul>
     );
 }

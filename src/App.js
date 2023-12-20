@@ -5,7 +5,8 @@ import Form from './components/Form';
 import getColumnTaskCount from './tasksFunctions';
 import validation from './validation';
 import columns from './columnFields';
-import useStorage from './hook'
+import useStorage from './hook';
+import './css/index.css';
 
 function App() {
     const { Provider: TaskProvider } = TaskContext;
@@ -72,7 +73,11 @@ function App() {
                 });
             }
             else {
-                console.log('above the limit')
+                alert('Column limit is Full!');
+                setValues({
+                    taskName: '',
+                    authorName: '',
+                });
             }
          
 
@@ -88,10 +93,12 @@ function App() {
     };
 
     return (
-        <TaskProvider value={{ taskArr, setTaskArr, nextHandle, prevHandle}}>
-            <Board />
-            <Form handleSubmit={handleSubmit} values={values} onChange={onChange} errors={errors} />
-        </TaskProvider>
+        <div className="app">
+            <TaskProvider value={{ taskArr, setTaskArr, nextHandle, prevHandle }}>
+                <Board />
+                <Form handleSubmit={handleSubmit} values={values} onChange={onChange} errors={errors} />
+            </TaskProvider>
+        </div>
     );
 }
 

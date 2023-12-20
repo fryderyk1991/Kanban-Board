@@ -3,21 +3,26 @@
    text-align: center;
    display: flex;
    flex-direction: column;
+   width: 33%;
 }
 .column__task {
     min-height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
+    width: 80%;
+    margin: 0 auto;
+}   
 .column__header {
     height: 50px;
     line-height: 50px;
-    border-bottom: 1px solid #232434;
+    border-bottom: 1px solid #66bfbf;
+    font-weight: 700;
+    color:#272343;
 }
 .column:nth-child(2) {
-    border-left: 1px solid #232434;
-    border-right: 1px solid #232434;
+    border-left: 1px solid #66bfbf;
+    border-right: 1px solid #66bfbf;
 }
 .column__footer {
     height: 30px;

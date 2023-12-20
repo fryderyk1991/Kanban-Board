@@ -1,25 +1,35 @@
 .task__list {
+    width: 100%;
     list-style-type: none;
     border-radius: 10px;
     margin: 15px auto;
     padding: 10px;
-    max-width: 80%;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     cursor: pointer;
-    position: relative;
 }
 .list__item {
     margin: 10px 0;
+    color: #272343;
 }
 .list__arrow--next {
     position: absolute;
     right: 10px;
     top: 50%;
     transform: translateY(-50%);
+    padding-top: 10px;
 }
 .list__arrow--prev {
     position: absolute;
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
+    padding-top: 10px;
+}
+.task__user {
+    position: relative;
+    border-top: 1px solid #f76b8a;
+    padding-top: 10px;
+}
+.list__arrows {
+    color:  #f76b8a;
 }

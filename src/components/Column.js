@@ -20,7 +20,7 @@ function Column({ name, limit, id }) {
                     )}
                 </TaskConsumer>
             </main>
-            <footer className="column__footer">{limit}L</footer>
+            <footer className="column__footer">limit - {limit}</footer>
         </section>
     );
 }

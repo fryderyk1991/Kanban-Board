@@ -6,14 +6,12 @@
 }
 body {
   font-family: 'Lato', sans-serif;
+  background: linear-gradient(to top, #dfe9f3 20%, white 100%);
 }
-
-/* .color1 {color: #060606;}  black
-.color2 {color: #232434;} black 80%
-.color3 {color: #585e78;} grey
-.color4 {color: #919ccb;}grey/blue
-.color5 {color: #cad4e8;} light grey*/
-
-body {
-  background-color: #cad4e8;
+html, body {
+  min-height: 100%;
+  width: 100%;
+}
+.app {
+  height: 100%;
 }
