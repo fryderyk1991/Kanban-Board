@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import inputs from '../inputs';
 import '../css/form.css';
 
-function Form({ handleSubmit, onChange, values }) {
+function Form({ handleSubmit, onChange, values, errors }) {
     return (
         <section className="section__add-task add-task">
             <form className="add-task__form form" onSubmit={handleSubmit} noValidate>
@@ -17,8 +17,8 @@ function Form({ handleSubmit, onChange, values }) {
                             type={field.type}
                             value={values[field.name]}
                             onChange={onChange}
-                            required
                         />
+                        {errors && <span className="form__error">{errors[field.name]}</span>}
                     </label>
                 ))}
                 <button type="submit">Add task</button>
@@ -33,6 +33,10 @@ Form.propTypes = {
     values: PropTypes.shape({
         taskName: PropTypes.string.isRequired,
         authorName: PropTypes.string.isRequired,
+    }).isRequired,
+    errors: PropTypes.shape({
+        taskName: PropTypes.string,
+        authorName: PropTypes.string,
     }).isRequired,
 };
 

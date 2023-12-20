@@ -4,6 +4,7 @@ import BoardContext from './BoardContext';
 import TaskContext from './TaskContext';
 import Form from './components/Form';
 import getColumnTaskCount from './tasksFunctions';
+import validation from './validation';
 
 function App() {
     const { Provider: BoardProvider } = BoardContext;
@@ -12,6 +13,7 @@ function App() {
         taskName: '',
         authorName: '',
     });
+    const [errors, setErrors] = useState({})
     /// colArr przenieśc do osobnego pliku - nie zmieniamy state, więc nam to nie potrzebne
     const [colArr, setColArr] = useState([
         {
@@ -91,7 +93,9 @@ function App() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(values)
+        const err = validation(values);
+        setErrors(err);
+        console.log(errors)
     };
 
     const onChange = (e) => {
@@ -106,7 +110,7 @@ function App() {
         <BoardProvider value={{ colArr, setColArr }}>
             <TaskProvider value={{ taskArr, nextHandle, prevHandle }}>
                 <Board />
-                <Form handleSubmit={handleSubmit} values={values} onChange={onChange} />
+                <Form handleSubmit={handleSubmit} values={values} onChange={onChange} errors={errors}/>
             </TaskProvider>
         </BoardProvider>
     );
