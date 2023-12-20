@@ -13,26 +13,7 @@ function App() {
         authorName: '',
     });
     const [errors, setErrors] = useState({});
-    const [taskArr, setTaskArr] = useState([
-        {
-            id: 1,
-            name: 'Task1',
-            idColumn: 1,
-            user: 'Anna',
-        },
-        {
-            id: 2,
-            name: 'Task2',
-            idColumn: 1,
-            user: 'Robert',
-        },
-        {
-            id: 3,
-            name: 'Task3',
-            idColumn: 1,
-            user: 'John',
-        },
-    ]);
+    const [taskArr, setTaskArr] = useState([]);
 
     const nextHandle = (idTask, idColumn) => {
         if (idColumn <= 2) {
@@ -76,19 +57,41 @@ function App() {
         e.preventDefault();
         const err = validation(values);
         setErrors(err);
-        console.log(errors);
-    };
+       
+        if (Object.keys(err).length === 0) {
+            const newTask = {
+                id: taskArr.length + 1,
+                name: values.taskName,
+                user: values.authorName,
+                idColumn: 1, 
+            };
+            const getFirstCountOfTask = getColumnTaskCount(newTask.idColumn, taskArr);
+            const colLimit = columns.find((col) => col.id === newTask.idColumn).limit;
+            if (getFirstCountOfTask < colLimit) {
+                setTaskArr((prevTaskArr) => [...prevTaskArr, newTask]);
+                setValues({
+                    taskName: '',
+                    authorName: '',
+                });
+            }
+            else {
+                console.log('above the limit')
+            }
+         
 
+        }
+    };
+    
     const onChange = (e) => {
         const { name, value } = e.target;
         setValues((prevValues) => ({
             ...prevValues,
             [name]: value,
         }));
-        console.log(name, value);
     };
+
     return (
-        <TaskProvider value={{ taskArr, nextHandle, prevHandle }}>
+        <TaskProvider value={{ taskArr, setTaskArr, nextHandle, prevHandle}}>
             <Board />
             <Form handleSubmit={handleSubmit} values={values} onChange={onChange} errors={errors} />
         </TaskProvider>

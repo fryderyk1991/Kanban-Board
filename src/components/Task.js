@@ -7,26 +7,19 @@ import TaskContext from '../TaskContext';
 function Task({ name, user, idTask, idCol }) {
     const { nextHandle, prevHandle } = useContext(TaskContext);
     const [isHovered, setIsHovered] = useState(false);
-    // const [isArrowOff , setIsArrowOf]  = useState(false);
-
-    // const handleArrow = () => {
-    //     const colNum = idCol;
-
-    // }
 
     return (
         <ul
             className="task__list list"
             onMouseEnter={() => {
                 setIsHovered(true)
-                // handleArrow()
             }}
             onMouseLeave={() => setIsHovered(false)}
         >
             {isHovered ? (
                 <div className="list__arrows">
                     <HiOutlineArrowSmallRight className="list__arrow--next" size={25} onClick={() => nextHandle(idTask, idCol)} />
-                    <HiOutlineArrowSmallLeft className="list__arrow--prev" size={25} onClick={() => prevHandle(idTask, idCol)} />
+                    <HiOutlineArrowSmallLeft className="list__arrow--prev" size={25} onClick={() => prevHandle(idTask, idCol)}/>
                 </div>
             ) : null}
             <li className="task__name list__item">{name}</li>
@@ -34,9 +27,6 @@ function Task({ name, user, idTask, idCol }) {
         </ul>
     );
 }
-
-
-// 
 
 Task.propTypes = {
     name: PropTypes.string.isRequired,

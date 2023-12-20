@@ -17,11 +17,12 @@ function Form({ handleSubmit, onChange, values, errors }) {
                             type={field.type}
                             value={values[field.name]}
                             onChange={onChange}
+                            required
                         />
                         {errors && <span className="form__error">{errors[field.name]}</span>}
                     </label>
                 ))}
-                <button type="submit">Add task</button>
+                <button className="form__btn--submit" type="submit">Add task</button>
             </form>
         </section>
     );
