@@ -5,4 +5,6 @@ const getNextColumn = (currentCol, columns) => {
     return columns.some((col) => col.id === nextCol)
 };
 
-export { getColumnTaskCount, getNextColumn };
+const getNameOfCol = (nextCol, columns) => columns.find((col) => col.id === nextCol).name
+
+export { getColumnTaskCount, getNextColumn, getNameOfCol };

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Board from './components/Board';
 import TaskContext from './TaskContext';
 import Form from './components/Form';
-import {getColumnTaskCount} from './helpers';
+import {getColumnTaskCount, getNameOfCol} from './helpers';
 import validation from './validation';
 import columns from './columnFields';
 import useStorage from './hook';
@@ -30,6 +30,10 @@ function App() {
                 );
                 setTaskArr(updateTaskArr);
             } 
+            else {
+                const name = getNameOfCol(nextIdColumn, columns);
+                alert(`Column ${name} is full!`)
+            }
         }
     };
 
@@ -46,6 +50,10 @@ function App() {
                 );
                 setTaskArr(updateTaskArr);
             } 
+            else {
+                const name = getNameOfCol(prevIdColumn, columns);
+                alert(`Column ${name} is full!`)
+            }
         }
     };
 
