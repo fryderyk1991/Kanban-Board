@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Board from './components/Board';
 import TaskContext from './TaskContext';
 import Form from './components/Form';
-import getColumnTaskCount from './tasksFunctions';
+import {getColumnTaskCount} from './helpers';
 import validation from './validation';
 import columns from './columnFields';
 import useStorage from './hook';

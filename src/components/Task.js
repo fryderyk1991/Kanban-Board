@@ -3,7 +3,7 @@ import { HiOutlineArrowSmallRight, HiOutlineArrowSmallLeft } from 'react-icons/h
 import PropTypes from 'prop-types';
 import '../css/task.css';
 import TaskContext from '../TaskContext';
-import getColumnTaskCount from '../tasksFunctions';
+import {getColumnTaskCount, getNextColumn} from '../helpers';
 import columns from '../columnFields';
 
 function Task({ name, user, idTask, idCol, tasks }) {
@@ -17,7 +17,7 @@ function Task({ name, user, idTask, idCol, tasks }) {
             const nextCol = idCol + 1;
             const countTaskInColumn = getColumnTaskCount(nextCol, tasks);
             const colLimit = columns.find((col) => col.id === nextCol).limit;
-            
+
             if (countTaskInColumn >= colLimit) {
                 setShowRightArrow(false);
             } else {
@@ -39,14 +39,13 @@ function Task({ name, user, idTask, idCol, tasks }) {
             }
         }
     };
-   
 
     return (
         <ul
             className="task__list list"
             onMouseEnter={() => {
                 setIsHovered(true);
-                nextArrow();
+                nextArrow(console.log(idCol));
                 prevArrow();
             }}
             onMouseLeave={() => {
@@ -58,14 +57,14 @@ function Task({ name, user, idTask, idCol, tasks }) {
                 {user}
                 {isHovered ? (
                     <div className="list__arrows">
-                        {idCol !== 3 && showRightArrow && (
+                        {getNextColumn(idCol, columns) && showRightArrow && (
                             <HiOutlineArrowSmallRight
                                 className="list__arrow--next"
                                 size={25}
                                 onClick={() => nextHandle(idTask, idCol)}
                             />
                         )}
-                        {idCol !== 1 && showLeftArrow && (
+                        {idCol !==1  && showLeftArrow && (
                             <HiOutlineArrowSmallLeft
                                 className="list__arrow--prev"
                                 size={25}
