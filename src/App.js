@@ -31,7 +31,6 @@ function App() {
                 setTaskArr(updateTaskArr);
             } 
         }
-        return nextHandle;
     };
 
     const prevHandle = (idTask, idColumn) => {
@@ -48,7 +47,6 @@ function App() {
                 setTaskArr(updateTaskArr);
             } 
         }
-        return prevHandle;
     };
 
     const handleSubmit = (e) => {
