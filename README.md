@@ -1,5 +1,7 @@
+![tasks](https://github.com/fryderyk1991/Kanban-Board/assets/95125510/2e048cf4-6c24-4815-aece-20add42a8621)
+
 # Kanban-Board
-I would like to present you live version of [Kanban-Board](link)
+I would like to present you live version of [Kanban-Board](https://cozy-snickerdoodle-72758b.netlify.app/)
 
 This is a simple implementation of a Kanban Board, a tool that helps visualize and manage work. Originally it was first created in Toyota automotive, but nowadays it's widely used in software development.
 
