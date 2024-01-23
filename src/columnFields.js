@@ -2,7 +2,7 @@ const columns = [
     {
         id: 1,
         name: 'To Do',
-        limit: 4,
+        limit: 3,
     },
     {
         id: 2,
@@ -12,7 +12,7 @@ const columns = [
     {
         id: 3,
         name: 'Completed',
-        limit: 4,
+        limit: 3,
     },
 ]
 
